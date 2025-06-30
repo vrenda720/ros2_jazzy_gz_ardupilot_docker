@@ -147,4 +147,8 @@ RUN echo "source /opt/ros/jazzy/setup.bash" >> /home/devuser/.bashrc
 
 USER devuser
 
-# RUN colcon build --packages-up-to ardupilot_sitl
+RUN . /opt/ros/jazzy/setup.sh && \
+    colcon build \
+    --event-handlers "console_direct+" \
+    --merge-install \
+    --symlink-install
