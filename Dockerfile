@@ -127,7 +127,7 @@ RUN apt install openjdk-17-jdk -y
 
 WORKDIR /home/devuser/src
 
-RUN git clone https://github.com/eProsima/Micro-XRCE-DDS-Gen.git
+RUN git clone "https://github.com/ArduPilot/Micro-XRCE-DDS-Gen.git"
 
 WORKDIR /home/devuser/src/Micro-XRCE-DDS-Gen
 
