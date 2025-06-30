@@ -152,3 +152,5 @@ RUN . /opt/ros/jazzy/setup.sh && \
     --event-handlers "console_direct+" \
     --merge-install \
     --symlink-install
+
+RUN echo "source /home/devuser/ardu_ws/install/setup.bash" >> /home/devuser/.bashrc
