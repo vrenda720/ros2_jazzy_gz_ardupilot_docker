@@ -117,11 +117,11 @@ USER root
 
 RUN rosdep install -r --from-paths /home/devuser/ardu_ws/src --ignore-src --rosdistro "${ROS_DISTRO}" -y
 
-RUN curl -s "https://get.sdkman.io" | bash
+# RUN curl -s "https://get.sdkman.io" | bash
 
 # RUN sdk install gradle 8.14.2
 
-RUN bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && sdk install gradle 8.14.2"
+# RUN bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && sdk install gradle 8.14.2"
 
 RUN apt install openjdk-17-jdk -y
 
