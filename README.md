@@ -14,7 +14,8 @@ xhost +local:root
 ```
 sudo docker run -it --rm \
 -e DISPLAY=$DISPLAY \
--v / tmp/. X11-unix:/tmp/.X11-unix \
+-v /tmp/.X11-unix:/tmp/.X11-unix \
+--gpus 'all' \
 ros2_jazzy_gz_ardu
 ```
 
@@ -24,3 +25,6 @@ ros2_jazzy_gz_ardu
 ```
 ros2 launch ardupilot_gz_bringup iris_runway.launch.py
 ```
+
+
+* Gazebo currently doesn't grab the gpus ):
