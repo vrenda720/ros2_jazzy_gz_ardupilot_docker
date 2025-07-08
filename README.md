@@ -18,6 +18,8 @@ sudo docker run -it --rm \
 --gpus 'all' \
 ros2_jazzy_gz_ardu
 ```
+
+
 ```
 sudo docker run -it --rm \
 -e DISPLAY=$DISPLAY \
@@ -30,12 +32,15 @@ ros2_jazzy_gz_ardu
 # Launch (Example):
 
 ```
-ros2 launch ardupilot_gz_bringup iris_runway.launch.py
+ros2 launch ardupilot_gz_bringup wildthumper_playpen.launch.py
 ```
 
-Make sure to source the python venv
 ```
-./sim_vehicle.py -v ArduCopter --console --map --moddebug 3
+gz sim -v4 -r wildthumper_runway.sdf
 ```
+```
+./ws/src/ardupilot/Tools/autotest/sim_vehicle.py -v Rover -f gazebo-rover --model JSON --console --map --moddebug 3
+```
+
 
 * Gazebo currently doesn't grab the gpus ):
