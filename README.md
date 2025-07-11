@@ -31,10 +31,12 @@ ros2_jazzy_gz_ardu
 
 # Launch (Example):
 
+Launch wildthumper playpen test:
 ```
 ros2 launch ardupilot_gz_bringup wildthumper_playpen.launch.py
 ```
 
+Launch mavlink test:
 ```
 gz sim -v4 -r wildthumper_runway.sdf
 ```
@@ -42,5 +44,9 @@ gz sim -v4 -r wildthumper_runway.sdf
 ./ws/src/ardupilot/Tools/autotest/sim_vehicle.py -v Rover -f gazebo-rover --model JSON --console --map --moddebug 3
 ```
 
+VRX test:
+```
+ros2 launch vrx_gz competition.launch.py world:=sydney_regatta
+```
 
 * Gazebo currently doesn't grab the gpus ):
