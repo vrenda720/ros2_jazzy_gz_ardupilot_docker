@@ -76,6 +76,23 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN pip install mavproxy --break-system-packages
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    tmux \
-    && rm -rf /var/lib/apt/lists/*
+ARG PAUL_repo_DIR="/ws/src/Distributional_RL_Decision_and_Control"
+
+RUN git clone \
+    --depth=1 \
+    --single-branch \
+    --recursive \
+    "https://github.com/pszenher/Distributional_RL_Decision_and_Control.git" \
+    -b jazzy-vrx-v3.0.3 \
+    "${PAUL_repo_DIR}"
+
+RUN apt update
+
+RUN cd ws/ && rosdep install --from-paths src -y --ignore-src -r
+
+RUN . /opt/ros/jazzy/setup.sh && \
+    cd ws/ && \
+    colcon build \
+    --event-handlers "console_direct+" \
+    --merge-install \
+    --symlink-install
