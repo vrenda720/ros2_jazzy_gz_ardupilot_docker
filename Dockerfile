@@ -96,3 +96,5 @@ RUN . /opt/ros/jazzy/setup.sh && \
     --event-handlers "console_direct+" \
     --merge-install \
     --symlink-install
+
+COPY wamv_gazebo.urdf.xacro "${PAUL_repo_DIR}/vrx/vrx_urdf/wamv_gazebo/urdf/wamv_gazebo.urdf.xacro"
