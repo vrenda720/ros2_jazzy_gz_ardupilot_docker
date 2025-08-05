@@ -122,7 +122,7 @@
       -->
       <control channel="0">
         <jointName>wamv/left_engine_propeller_joint</jointName>
-        <multiplier>70</multiplier>
+        <multiplier>10000</multiplier>
         <offset>-0.5</offset>
         <servo_min>1000</servo_min>
         <servo_max>2000</servo_max>
@@ -139,7 +139,7 @@
       -->
       <control channel="2">
         <jointName>wamv/right_engine_propeller_joint</jointName>
-        <multiplier>70</multiplier>
+        <multiplier>10000</multiplier>
         <offset>-0.5</offset>
         <servo_min>1000</servo_min>
         <servo_max>2000</servo_max>

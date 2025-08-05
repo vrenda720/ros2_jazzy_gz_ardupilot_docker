@@ -7,13 +7,25 @@ RUN echo 'APT::Install-Recommends "false";' > "/etc/apt/apt.conf.d/90-docker-no-
     echo 'APT::Install-Suggests "false";'   > "/etc/apt/apt.conf.d/90-docker-no-suggests"
 
 RUN apt update && apt install -y \
-      \
-      python3-pexpect \
-      openjdk-17-jdk \
-      ros-jazzy-ros-gz \
-      \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt clean -qq
+    \
+    python3-pexpect \
+    openjdk-17-jdk \
+    ros-jazzy-ros-gz \
+    python3-dev \
+    python3-opencv \
+    python3-wxgtk4.0 \
+    python3-pip \
+    python3-matplotlib \
+    python3-lxml \
+    python3-pygame \
+    python3-numpy \
+    python3-serial \
+    python3-future \
+    python3-lxml \
+    libcanberra-gtk-module \
+    libcanberra-gtk3-module \
+    \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY ros2_ardu.repos "/tmp/ros2_ardu.repos"
 
@@ -57,23 +69,6 @@ RUN . /opt/ros/jazzy/setup.sh && \
 RUN echo "source /opt/ros/jazzy/setup.bash" >> /root/.bashrc
 RUN echo "source /ws/install/setup.bash" >> /root/.bashrc
 
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3-dev \
-    python3-opencv \
-    python3-wxgtk4.0 \
-    python3-pip \
-    python3-matplotlib \
-    python3-lxml \
-    python3-pygame \
-    python3-numpy \
-    python3-serial \
-    python3-future \
-    python3-lxml \
-    libcanberra-gtk-module \
-    libcanberra-gtk3-module \
-    && rm -rf /var/lib/apt/lists/*
-
 RUN pip install mavproxy --break-system-packages
 
 ARG PAUL_repo_DIR="/ws/src/Distributional_RL_Decision_and_Control"
@@ -98,3 +93,7 @@ RUN . /opt/ros/jazzy/setup.sh && \
     --symlink-install
 
 COPY wamv_gazebo.urdf.xacro "${PAUL_repo_DIR}/vrx/vrx_urdf/wamv_gazebo/urdf/wamv_gazebo.urdf.xacro"
+
+RUN cd /ws/src/ardupilot && ./waf configure --board sitl
+
+RUN cd /ws/src/ardupilot && ./waf build --target bin/ardurover
